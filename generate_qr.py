@@ -3,7 +3,7 @@ import random
 import string
 import qrcode
 
-# 生成するQRコードの総数（例：1〜99999個）
+# 生成するQRコードの総数（ここでは10個）
 NUM_QR = 10
 
 def random_string(length=10):
@@ -21,9 +21,7 @@ def generate_qr_codes(num):
         # わかりやすいようにゼロパディングしたファイル名で保存
         filename = os.path.join("qr", f"qr_{i:05d}.png")
         img.save(filename)
-        # 進捗表示（1000枚ごと）
-        if i % 1000 == 0:
-            print(f"{i} QR codes generated.")
+        print(f"QR code {i} generated.")
 
 if __name__ == "__main__":
     generate_qr_codes(NUM_QR)
