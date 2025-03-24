@@ -1,9 +1,7 @@
-name: Generate QR Codes
+name: Generate and Commit QR Codes
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   generate:
@@ -11,6 +9,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          # コミット＆プッシュを行うために、トークンの資格情報を維持
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -26,3 +27,9 @@ jobs:
         run: |
           mkdir -p qr
           python generate_qr.py
+
+      - name: Commit generated QR codes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "qr"
+          message: "Add generated QR codes"
