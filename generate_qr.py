@@ -4,7 +4,7 @@ import string
 import qrcode
 
 # 生成するQRコードの総数（例：1〜99999個）
-NUM_QR = 99999
+NUM_QR = 10
 
 def random_string(length=10):
     """ランダムな英数字の文字列を生成する"""
