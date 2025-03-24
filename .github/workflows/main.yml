@@ -10,7 +10,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          # コミット＆プッシュを行うために、トークンの資格情報を維持
           persist-credentials: true
 
       - name: Setup Python
